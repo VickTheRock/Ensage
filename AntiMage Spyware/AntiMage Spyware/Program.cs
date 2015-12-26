@@ -119,20 +119,16 @@ namespace AntiMage_Spyware
             
             if (Menu.Item("Illusion").GetValue<bool>())
             {
-                foreach (var enemy in targets)
-                {
-                    if (enemy.Health > 0)
+                foreach (var illusion in illus)
                     {
-                        foreach (var illusion in illus)
-                        {
-                            if (GetDistance2D(enemy.Position, illusion.Position) < 400 && Utils.SleepCheck(illusion.Handle.ToString()))
+                        if (GetDistance2D(enemy.Position, illusion.Position) < 600 && Utils.SleepCheck(illusion.Handle.ToString()))
                             {
-                                illusion.Attack(enemy);
+                                illusion.Attack(target);
                                 Utils.Sleep(1000, illusion.Handle.ToString());
                             }
-                        }
                     }
-                }
+                    
+                
             }
             if (combo && Menu.Item("enable").GetValue<bool>())
             {
